@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Web.Models.FormationViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Nom de la formation")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duree)
+        </th>
+        <th>
+            @Html.DisplayName("Type de la formation")
+        </th>
+        <th>
+            @Html.DisplayName("Nombre de participants")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prix)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomFormation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duree)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeFormation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NbParticipants)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prix)
+        </td>
+        <td>
+            @Html.ActionLink("Participer", "Details", new { id=item.IdFormation, idCandidat = ViewData["IdCandidat"] })
+        </td>
+    </tr>
+}
+
+</table>

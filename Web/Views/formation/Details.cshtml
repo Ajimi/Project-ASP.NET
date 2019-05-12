@@ -1,0 +1,34 @@
+﻿@model Web.Models.FormationViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+<div>
+
+    @{ if ((bool)ViewData["confirmed"])
+        {
+            <h4>Details de la participant</h4>
+            <hr />
+            <p>
+                Nom du candidat : @ViewBag.nomCandidat<br />
+                Prenom du candidat : @ViewBag.prenomCandidat<br />
+                Nom de la Formation : @Html.ValueFor(model => model.NomFormation)<br />
+                Duree de la formation : @Html.ValueFor(model => model.Duree)<br />
+                Nombre pariticipants restants : @Html.ValueFor(model => model.NbParticipants)<br />
+                Prix de la formation : @Html.ValueFor(model => model.Prix)<br />
+            </p>
+        }
+        else
+        {
+            <p>error</p>
+            <br />
+            <h4 style="color:red;align-content:center;">Bonjour @ViewBag.nomCandidat @ViewBag.prenomcandidat vous ne pouvez pas participer à cette formation</h4>
+        }
+
+    }
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
